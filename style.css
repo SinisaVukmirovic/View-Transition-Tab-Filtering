@@ -169,6 +169,7 @@ body {
     padding: 0;
 }
 
+/* this makes the last child elem and if the elem doesnot have a hidden sibling */
 .conference:not(:last-child):not(:has(+ [hidden])) {
     padding-bottom: 2rem;
     margin-bottom: 2rem;
@@ -202,7 +203,9 @@ body {
 }
 
 .filter-btn.active {
+    /* to prevent click on already chosen tab */
     pointer-events: none;
+
     background: black;
     color: white;
     box-shadow: 0 0 0.5rem rgb(0 0 0 / 0.2);

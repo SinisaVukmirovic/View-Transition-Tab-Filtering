@@ -4,13 +4,19 @@ const conferences = document.querySelectorAll('.conference');
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-        const filter = e.currentTarget.getAttribute('data-filter');
+        const filter = e.target.getAttribute('data-filter');
 
         // change the active btn
-        updateActiveBtn(e.currentTarget);
+        // updateActiveBtn(e.target);
 
         // filter the list
-        filterConferences(filter);
+        // filterConferences(filter);
+
+        // to have view transitions
+        document.startViewTransition(() => {
+            updateActiveBtn(e.target);
+            filterConferences(filter);
+        });
     });
 });
 
