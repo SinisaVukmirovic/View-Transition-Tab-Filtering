@@ -2,6 +2,13 @@ const filterList = document.querySelector('.filter');
 const filterBtns = filterList.querySelectorAll('.filter-btn');
 const conferences = document.querySelectorAll('.conference');
 
+// do add view transition on individual elements
+let viewTransitionIndex = 0;
+
+conferences.forEach(conf => {
+    conf.style.viewTransitionName = `conf-${++viewTransitionIndex}`;
+});
+
 filterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         const filter = e.target.getAttribute('data-filter');
@@ -12,7 +19,14 @@ filterBtns.forEach(btn => {
         // filter the list
         // filterConferences(filter);
 
-        // to have view transitions
+
+        // adding view transitions
+        // fallback for browsers that don't support view transitions
+        if (!document.startViewTransition(() => {
+            updateActiveBtn(e.target);
+            filterConferences(filter);  
+        }));
+
         document.startViewTransition(() => {
             updateActiveBtn(e.target);
             filterConferences(filter);
