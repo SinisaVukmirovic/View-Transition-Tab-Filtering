@@ -215,7 +215,7 @@ body {
 /* to customise view transitions */
 /* for the entire page */
 ::view-transition-group(root) {
-    animation-duration: .5s;
+    animation-duration: .25s;
     /* mix-blend-mode: none; */
 }
 
